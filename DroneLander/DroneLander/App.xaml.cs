@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Azure.Mobile;
+using Microsoft.Azure.Mobile.Analytics;
+using Microsoft.Azure.Mobile.Crashes;
 
 using Xamarin.Forms;
 
@@ -16,6 +19,11 @@ namespace DroneLander
             InitializeComponent();
 
             MainPage = new NavigationPage(new DroneLander.MainPage());
+
+            MobileCenter.Start("android=468aebad-31b8-40f1-be58-f648257fa0c4;" +
+                   "uwp={Your UWP App secret here};" +
+                   "ios={Your iOS App secret here}",
+                   typeof(Analytics), typeof(Crashes));
         }
 
         protected override void OnStart()
